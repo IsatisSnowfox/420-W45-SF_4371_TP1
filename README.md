@@ -11,18 +11,64 @@
   - Masque : 255.255.255.0
   - Passerelle : 10.100.2.1
 
+- Fichiers hosts
+![Fichiers hosts](img/fichierHosts.jpg)
+
 - Port des services ouverts
-  - 
+  - **systemd-n :** 68
+  - **systemd-r :** 53
+  - **sshd :** 22
+  - **mysqld :** 3306, 33060
+  - **nginx :** 80
+  ![Ports des services ouverts](img/PortsUtilises.jpg)
 
 - Usager utilisé pour l'installation
-  - 
+  - **Nom d'utilisateur :** ldubois
+  - **Mot de passe :** password
 
 ## Mises à jour préalables à l'installation et ajout de composants nécessaires
 Ce que doit contenir votre serveur pour devenir un modèle de déploiement.
 - Programmes
-  - Nom
-    - Version : 
-    - Procédure d'installation
+  - wget
+    - Version : 1.21.2
+    - Procédure d'installation : `apt install wget`
+    - Répertoires utilisés
+      -  Par le programme : /etc/wgetrc
+      -  Par ses fichiers de configuration : 
+      -  Par ses données : 
+    - Espace disque utilisé :
+    - Droits sur les répertoires :
+    - Nom d'usager (UID) :
+    - Groupe (GID) :
+  - git
+    - Version : 2.34.1
+    - Procédure d'installation : `apt install git`
+    - Répertoires utilisés
+      -  Par le programme : 
+      -  Par ses fichiers de configuration : 
+      -  Par ses données : 
+    - Espace disque utilisé :
+    - Droits sur les répertoires : 
+    - Nom d'usager (UID) :
+    - Groupe (GID) :
+  - curl
+    - Version : 7.81.0
+    - Procédure d'installation : `apt install curl`
+    - Répertoires utilisés
+      -  Par le programme : 
+      -  Par ses fichiers de configuration : 
+      -  Par ses données : 
+    - Espace disque utilisé :
+    - Droits sur les répertoires :
+    - Nom d'usager (UID) :
+    - Groupe (GID) :
+  - docker
+    - Version : 24.0.2
+    - Procédure d'installation ([Installation de docker](https://get.docker.com/)) : 
+      1. Téléchargez le script 
+         - `curl -fsSL https://get.docker.com -o install-docker.sh`
+      2. Lancez le script en sudo
+         - `sudo sh install-docker.sh`   
     - Répertoires utilisés
       -  Par le programme : 
       -  Par ses fichiers de configuration : 
