@@ -28,40 +28,45 @@
 
 ## Mises à jour préalables à l'installation et ajout de composants nécessaires
 Ce que doit contenir votre serveur pour devenir un modèle de déploiement.
+
+Avant de commencer l'installation de nouveaux packages, mettre à jour les packages existants en utilisant les commandes suivantes :
+
+`sudo apt update && sudo apt full-upgrade -y`
+
 - Programmes
   - wget
     - Version : 1.21.2
     - Procédure d'installation : `apt install wget`
     - Répertoires utilisés
-      -  Par le programme : /etc/wgetrc
-      -  Par ses fichiers de configuration : 
-      -  Par ses données : 
-    - Espace disque utilisé :
-    - Droits sur les répertoires :
-    - Nom d'usager (UID) :
-    - Groupe (GID) :
+      -  Par le programme : /usr/bin/wget
+      -  Par ses fichiers de configuration : /etc/wgetrc 
+      -  Par ses données : /etc/wgetrc 
+    - Espace disque utilisé : 516K
+    - Droits sur les répertoires : rwxr-xr-x
+    - Nom d'usager (UID) : root
+    - Groupe (GID) : root
   - git
     - Version : 2.34.1
     - Procédure d'installation : `apt install git`
     - Répertoires utilisés
-      -  Par le programme : 
-      -  Par ses fichiers de configuration : 
-      -  Par ses données : 
-    - Espace disque utilisé :
-    - Droits sur les répertoires : 
-    - Nom d'usager (UID) :
-    - Groupe (GID) :
+      -  Par le programme : /usr/bin/git/
+      -  Par ses fichiers de configuration : N/A 
+      -  Par ses données : N/A 
+    - Espace disque utilisé : 3.6M
+    - Droits sur les répertoires : rwxr-xr-x 
+    - Nom d'usager (UID) : root
+    - Groupe (GID) : root
   - curl
     - Version : 7.81.0
     - Procédure d'installation : `apt install curl`
     - Répertoires utilisés
-      -  Par le programme : 
-      -  Par ses fichiers de configuration : 
-      -  Par ses données : 
-    - Espace disque utilisé :
-    - Droits sur les répertoires :
-    - Nom d'usager (UID) :
-    - Groupe (GID) :
+      -  Par le programme : /usr/bin/curl
+      -  Par ses fichiers de configuration : N/A
+      -  Par ses données : N/A
+    - Espace disque utilisé : 255K
+    - Droits sur les répertoires : rwxr-xr-x
+    - Nom d'usager (UID) : root
+    - Groupe (GID) : root
   - docker
     - Version : 24.0.2
     - Procédure d'installation ([Installation de docker](https://get.docker.com/)) : 
@@ -70,13 +75,47 @@ Ce que doit contenir votre serveur pour devenir un modèle de déploiement.
       2. Lancez le script en sudo
          - `sudo sh install-docker.sh`   
     - Répertoires utilisés
-      -  Par le programme : 
-      -  Par ses fichiers de configuration : 
-      -  Par ses données : 
-    - Espace disque utilisé :
-    - Droits sur les répertoires :
-    - Nom d'usager (UID) :
-    - Groupe (GID) :
+      -  Par le programme : /usr/bin/docker
+      -  Par ses fichiers de configuration : /etc/docker/
+      -  Par ses données : /etc/docker/ 
+    - Espace disque utilisé : 4.0K
+    - Droits sur les répertoires : rwxr-xr-x
+    - Nom d'usager (UID) : root
+    - Groupe (GID) : root
+  - nginx
+    - Version : 1.18.0
+    - Procédure d'installation : 
+    - Répertoires utilisés
+      -  Par le programme : /usr/sbin/nginx 
+      -  Par ses fichiers de configuration : /etc/nginx/
+      -  Par ses données : /etc/nginx/
+    - Espace disque utilisé : 4.0K
+    - Droits sur les répertoires : rwxr-xr-x
+    - Nom d'usager (UID) : root
+    - Groupe (GID) : root
+  - mysql server
+    - Version : 8.0.33-0
+    - Procédure d'installation : `sudo apt install mysql-server-8.0 && sudo mysql_secure_installation`
+    - Répertoires utilisés
+      -  Par le programme : /usr/bin/mysql 
+      -  Par ses fichiers de configuration : /etc/mysql/
+      -  Par ses données : /etc/mysql/
+    - Espace disque utilisé : 6.7M
+    - Droits sur les répertoires : rwxr-xr-x
+    - Nom d'usager (UID) : root
+    - Groupe (GID) : root
+
+  - php
+    - Version : 8.1.2-1
+    - Procédure d'installation : `sudo apt install php-fpm php-cli php-mysql php-curl php-json`
+    - Répertoires utilisés
+      -  Par le programme : /usr/bin/php 
+      -  Par ses fichiers de configuration : /etc/8.1/
+      -  Par ses données : /etc/php8.1/
+    - Espace disque utilisé : 5.3SM
+    - Droits sur les répertoires : rwxr-xr-x
+    - Nom d'usager (UID) : root
+    - Groupe (GID) : root
 
 ## Procédure de validation de l'installation
 
@@ -85,6 +124,9 @@ Ce que doit contenir votre serveur pour devenir un modèle de déploiement.
 - `curl --version` : vérifie votre installation de curl
 - `git --version` : vérifie votre installation de git
 - `docker version` : vérifie votre installation de docker
+- `nginx -v` : vérifie votre installation de nginx
+- `mysql --version` : vérifie votre installation de mysql
+- `php --version` : vérifie votre installation php
 
 ### Vérification du stockage LVM
 - `sudo pvs` : vous permet de vérifier l'état de vos physical volumes
