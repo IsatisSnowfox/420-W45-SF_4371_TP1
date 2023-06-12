@@ -109,4 +109,8 @@ Si vous le souhaitez vous pouvez améliorer la sécurité de votre configuration
 - `AllowUsers user1 user2` &rarr; limite l'accès SSH uniquement aux utilisateurs listés
 - `AllowGroups ssh_group` &rarr; limite l'accès SSH uniquement aux membres du groupe listé
 
+Il existe également d'autres outils de sécurité tels que Fail2Ban et Google Authenticator qui peuvent protéger contre les attaques par force brute et mieux sécuriser les connexions.
+
+En plus, vous pouvez activer les connexions basées sur des clés SSH. Pour ce faire, il faut créer un fichier "authorized_keys" sur le serveur et puis mettre toutes les clés SSH publiques des ordinateurs autorisés dedans. Ensuite, changez `PasswordAuthentication Yes` pour `PasswordAuthentication Yes`, assurez-vous que la ligne `PubkeyAuthentication yes` est activée et que votre fichier "authorized_keys" est identifié dans la ligne `AuthorizedKeysFile`.
+
 Pour que les changements soient pris en compte redémarrez le service en utilisant la commande `systemctl restart ssh.service`
