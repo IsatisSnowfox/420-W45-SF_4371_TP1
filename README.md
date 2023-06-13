@@ -24,6 +24,35 @@ Le menu final est un résumé de votre machine, vous vérifiez donc que vous ave
 
 Félicitations, vous avez créé votre serveur et vous pouvez maintenant installer Ubuntu.
 
+## Installation d’Ubuntu
+
+Si vous avez bien configuré votre machine virtuelle, quand vous la mettez sur tension un menu qui vous demande d’essayer ou installer Ubuntu sera affiché. Choisissez cette option et attendez que la sélection de langue apparaisse et sélectionnez une langue qui vous convient. C’est possible que l’installeur vous demande si vous aimeriez le mettre à jour. Cela n’est pas obligatoire, mais le choix ne changera pas grand-chose. Puis, sélectionnez le bon clavier, celui que vous utilisez d’habitude. Pour la prochaine étape, vous choisissez généralement « Ubuntu server », car la différence de taille n’est pas si grande, mais il y a des chances que l’instillation minimale vous convienne mieux.
+![Type d'installation](img/UbuntuServer.jpg)
+
+Le prochain menu est la configuration du réseau. Vous pouvez assigner une adresse IPv4 et IPv4 statique ou automatique à votre serveur ou les désactiver selon vos besoins. Dans mon cas, l’adressage d’IPv6 n’est pas disponible : mon adresse IPv6 n’a jamais été assignée.
+![Type d'adressage](img/IPv6Configuration.jpg)
+![Configuration du réseau](img/Reseau.jpg)
+
+Vous pouvez laisser le proxy vide si vous n’en avez pas besoin et vous pouvez laisser et, quant au miroir d’archive Ubuntu, vous pouvez ne rien changer à moins qu’il le faille.
+
+Pour la configuration de stockage, assurez-vous que « Set up this disk as an LMV group » est sélectionné et que vous utilisez le bon disque.
+![Configuration du stockage](img/ConfigureLVM.jpg)
+
+Puis vous confirmez la configuration du stockage et l’installation, même si le bouton est en rouge.
+![Résumé de la configuration](img/storageConfiguration.jpg)
+![Confirmation de l'installation](img/ConfirmationInstillation.jpg)
+
+Vous passez à la configuration du profil où vous remplissiez votre nom, pseudo et votre mot de passe. Choisissez aussi un nom de machine approprié.
+![Configuration du profil](img/ProfileSetup.jpg)
+
+Sur le prochain menu, vous vous assurez que « Install OpenSSH server » est coché et vous pouvez importer votre identité SSH si vous en avez besoin.
+![Configuration SSH](img/SSHSetup.jpg)
+
+Pour le menu final, vous ne cochez rien, à moins qu’il y ait un sevrer snap que vous voudriez utiliser et vous attendez l’installation.
+
+Après l’installation s’est terminée, vous déconnectez le lecteur CD/DVD et redémarrez le serveur. Si tout s’est bien passé, vous pouvez vous connecter et commencez à utiliser votre serveur.
+![Connexion intiale](img/ConnexionInitiale.jpg)
+
 ## Caractérisation de la machine serveur
 
 - Nom de la machine virtuelle et nom de la machine (hostname)
