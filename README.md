@@ -53,6 +53,18 @@ Pour le menu final, vous ne cochez rien, à moins qu’il y ait un sevrer snap q
 Après l’installation s’est terminée, vous déconnectez le lecteur CD/DVD et redémarrez le serveur. Si tout s’est bien passé, vous pouvez vous connecter et commencez à utiliser votre serveur.
 ![Connexion intiale](img/ConnexionInitiale.jpg)
 
+##Modification du stockage LVM
+
+Si vous avez ajouté un autre disque, il faut d’abord l’ajouter au « physical volume ». Pour ce faire utiliser la commande
+`sudo pvcreate /dev/sdb`
+Puis, il faut l’ajouter dans le « volume group » en utilisant la commande suivante
+`sudo vgextend ubuntu-vg /dev/sdb`
+Et ensuite, il faut étendre le « logical volume » avec la commande
+`sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv`
+Pour finir, vous ajustez votre fichier /etc/fstab avec la commande
+`sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv`
+
+
 ## Caractérisation de la machine serveur
 
 - Nom de la machine virtuelle et nom de la machine (hostname)
@@ -85,6 +97,9 @@ Après l’installation s’est terminée, vous déconnectez le lecteur CD/DVD e
 Avant de commencer l'installation de nouveaux packages, mettez à jour les packages existants en utilisant les commandes suivantes :
 
 `sudo apt update && sudo apt full-upgrade -y`
+
+C'est possible qu'une fenêtre apparaisse avec une liste de services à redémarrer. Vous pouvez laisser celles qui sont cochées par défaut et sélectionnez « OK ».
+![Services à redémarrer](img/ServicesRestartAfterUpdate.jpg)
 
 Ensuite, vous pouvez installer les programmes suivants pour que votre serveur devienne un modèle de déploiement.
 
@@ -183,10 +198,14 @@ Ensuite, vous pouvez installer les programmes suivants pour que votre serveur de
 - `mysql --version` : vérifie votre installation de mysql
 - `php --version` : vérifie votre installation php
 
+Après l'installation de docker, l'affichage après votre connexion sera changé et ressemblera à l'image ci-dessous.
+![Connexion après l'installation de docker](img/ConnexionApresInstillationDocker.jpg)
+
 ### Vérification du stockage LVM
 - `sudo pvs` : vous permet de vérifier l'état de vos physical volumes
 - `sudo vgs` : vous permet de vérifier l'état de vos volume groups
 - `sudo lvs` : vous permet de vérifier l'état de vos logical volumes
+![Stockage](img/pvsVgsLvs.jpg)
 
 ### Vérification de la connexion SSH
 Sur votre machine client, tapez la commande `ssh@nom_d_hote_de_votre_serveur -p `
