@@ -1,4 +1,29 @@
 # ISS_TP1_FG_SB
+## Création de la machine virtuelle
+
+Si vous créez votre serveur Ubuntu en utilisant vShpere, vous suivrez ces étapes suivantes. La création d’autres machines virtuelles sera semblable, mais pas pareille.
+
+Pour commencer la création, vous trouvez l’endroit où vous souhaitez faire votre serveur, cliquez droit sur le dossier et choisissez « Nouvelle machine virtuelle… ».
+![Nouvelle machine virtuelle](img/NouvelleMachineVirtuelle.png)
+
+La fenêtre de création sera affichée. Pour le premier menu, vous laissez « Créer une machine virtuelle » sélectionné et continuez au prochain menu. Ici, vous nommez votre serveur en respectant les règles de votre entreprise. Pour notre cégep, nous sommes obligés d’utiliser le format « nom de la session_nom de notre cohorte_numéro du cours_nom du système d’expoitation_brève description de la machine_nos initiales_notre matricule », j’ai donc nommé mon serveur « E23_4371_420W45_Ub_TP1_SB_2291653 ». Ici, vous vous assurez que le bon emplacement est bien choisi avant de procéder à la prochaine étape.
+![Nommage de la machine virtuelle](img/NommageDeLaMachine.png)
+
+Le troisième menu est pour choisir la bonne ressource de calcul et le quatrième est pour choisir le bon stockage. Votre choix dépend de votre entreprise et de votre réseau. Sur le prochain menu, vous sélectionnez une compatibilité. D’habitude, vous choisissez la version la plus récente de ESXi à moins que votre système ait des problèmes avec cette version.
+
+Le sixième menu est important puisque c’est là où vous sélectionnez le système d’exploitation. Étant donné que vous créez un serveur Ubuntu, vous choisissez « Linux » en tant que la famille de système d’exploitation et « Ubuntu Linux (64 bits) » en tant que sa version.
+![Sélection du système d'exploitation](img/selectionnerSystemExploitation.jpg)
+
+Ensuite, vous personnalisez le matériel de votre serveur. Puisque vous voulez qu’il ait 2 processeurs et 4 Go de mémoire vive, vous vous assurez que vous avez bien défini le nombre de CPU à 2 et la quantité de mémoire à 2 Go. C’est également une bonne pratique de changer le provisionnement des disques durs en dynamique. Vous choisissez aussi le réseau du serveur pour qu’il soit sur le réseau 10.100.2.0/24. Pour moi, cela signifie que je choisis le réseau VM DFC2. Finalement, vous connectez un nouveau lecteur CD/DVD qui est un fichier ISO de la banque de données. Faites attention à bien sélectionner l’ISO d’Ubuntu 22.04 pour les serveurs. Pour moi, ce fichier s’appelle « ubuntu-20.04-live-server-amd64.iso ». Cochez le paramètre « Connecter lors de la mise sous tension », sinon vous ne pourrez pas installer Ubuntu.
+![Personnalisation du matériel](img/personalliserMateriel.jpg)
+![Personnalisation du matériel](img/personalliserMateriel2.jpg)
+
+Le menu final est un résumé de votre machine, vous vérifiez donc que vous avez tous bien sélectionné avant de terminer la création de votre serveur.
+![Résumé de la machine virtuelle](img/Resume1.jpg)
+![Résumé de la machine virtuelle](img/Resume2.jpg)
+
+Félicitations, vous avez créé votre serveur et vous pouvez maintenant installer Ubuntu.
+
 ## Caractérisation de la machine serveur
 
 - Nom de la machine virtuelle et nom de la machine (hostname)
@@ -26,12 +51,13 @@
   - **Nom d'utilisateur :** ldubois
   - **Mot de passe :** password
 
-## Mises à jour préalables à l'installation et ajout de composants nécessaires
-Ce que doit contenir votre serveur pour devenir un modèle de déploiement.
+## Mises à jour préalables à l'installation et ajout de composants nécessaires.
 
-Avant de commencer l'installation de nouveaux packages, mettre à jour les packages existants en utilisant les commandes suivantes :
+Avant de commencer l'installation de nouveaux packages, mettez à jour les packages existants en utilisant les commandes suivantes :
 
 `sudo apt update && sudo apt full-upgrade -y`
+
+Ensuite, vous pouvez installer les programmes suivants pour que votre serveur devienne un modèle de déploiement.
 
 - Programmes
   - wget
